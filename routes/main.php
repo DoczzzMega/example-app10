@@ -8,7 +8,7 @@ use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::view('/', 'welcome')->name('home');
+Route::view('/', 'home.index')->name('home');
 Route::redirect('/home', '/')->name('home.redirect');
 
 Route::get('/test', TestController::class)->name('test')->middleware(['token:value_secret,foo','throttle:6,1']);
@@ -20,7 +20,6 @@ Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
     Route::post('/login', [LoginController::class, 'store'])->name('login.store')->middleware('guest');
 });
-
 
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
