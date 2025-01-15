@@ -1,4 +1,4 @@
 
-<footer class="py-3 border-top">
+<footer class="py-3 border-top text-center">
     Подвал © {{ $date }}
 </footer>

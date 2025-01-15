@@ -1,22 +1,32 @@
-
-<header class="py-3 border-bottom">
-
+<nav class="navbar navbar-expand-md bg-body-tertiary">
     <div class="container">
-        <div class="d-flex justify-content-between">
+        <a class="navbar-brand" href="{{ route('home') }}">{{ config('app.name') }}</a>
 
-            <div>
-                <a href="{{ route('home') }}">Главная</a>
-                <a class="ms-3" href="{{ route('blog.index') }}">Блог</a>
-            </div>
-            Шапка сайта
-            <div>
-                <ul class="d-flex list-unstyled">
-                    <li class="ms-3"><a href="{{ route('register.index') }}">Регистрация</a></li>
-                    <li class="ms-3"><a href="{{ route('login') }}">Вход</a></li>
-                </ul>
-            </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <li class="nav-item">
+                    <a class="nav-link {{ Route::is('home') ? 'active' : ''}}" aria-current="page" href="{{ route('home') }}">{{ __('Главная') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Route::is('blog.index') ? 'active' : ''}}" href="{{ route('blog.index') }}">{{ __('Блог') }}</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+                <li class="nav-item">
+                    <a class="nav-link {{ Route::is('register.index') ? 'active' : ''}}" aria-current="page" href="{{ route('register.index') }}">{{ __('Регистрация') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Route::is('login') ? 'active' : ''}}" href="{{ route('login') }}">{{ __('Вход') }}</a>
+                </li>
+            </ul>
 
         </div>
     </div>
+</nav>
 
-</header>

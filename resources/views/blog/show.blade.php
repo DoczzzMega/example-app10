@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <h1 class="mb-4">Просмотр поста</h1>
+    <h1 class="mb-4">Просмотр поста {{ Route::currentRouteAction() }}</h1>
 
     <a class="mb-4 d-block" href="{{ route('blog.index') }}">Назад</a>
 

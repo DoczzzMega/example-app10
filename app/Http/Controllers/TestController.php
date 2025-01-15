@@ -18,7 +18,7 @@ class TestController extends Controller
 
     function __invoke(Request $request): string
     {
-        return 'test controller';
+        return '<h1>test controller</h1>';
     }
 
     function index()
