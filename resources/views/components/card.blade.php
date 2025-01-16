@@ -1,3 +1,5 @@
-<div>
-    <!-- When there is no desire, all things are at peace. - Laozi -->
+<div class="card pt-3 pb-3 bg-body-secondary">
+
+    {{ $slot }}
+
 </div>

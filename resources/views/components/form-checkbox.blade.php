@@ -1,6 +1,8 @@
-@props(['connectorId' => ''])
+@props(['connectorId' => '', 'text' => ''])
 
 @php($id = Str::uuid()) {{-- Для генерации уникальных id --}}
+
+@php($text = ($text ? 'form-text' : ''))
 
 <div class="form-check">
 
@@ -8,7 +10,7 @@
     'value' => 1
 ]) }}  class="form-check-input" id="{{ $connectorId }}">
 
-    <label class="form-check-label" for="{{ $connectorId }}">
+    <label class="form-check-label {{ $text }}" for="{{ $connectorId }}">
 
         {{ $slot }}
 

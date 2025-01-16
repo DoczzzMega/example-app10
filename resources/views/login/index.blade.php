@@ -1,72 +1,70 @@
-@extends('layouts.base')
+@extends('layouts.auth')
 
 @section('page.title', 'Авторизация')
 
-@section('content')
+@section('auth.content')
 
-    <section>
-        <div class="container">
+    <x-card>
 
-            <div class="row justify-content-center">
+        <x-card-header>
 
-                <div class="col-sm-6 col-12">
+            <x-card-title>
+                {{ __('Вход') }}
+            </x-card-title>
 
-                    <div class="card pt-3 pb-3 bg-body-secondary">
+            <x-slot name="right">
 
-                        <x-card-header>
-                            {{ __('Вход') }}
-                        </x-card-header>
+                <a href="{{ route('register.index') }}">
+                    {{ __('Регистрация') }}
+                </a>
 
-                        <x-card-body>
-                            <x-form action="{{ route('login.store') }}" method="POST">
-                                @csrf
-                                <x-form-item required>
+            </x-slot>
 
-                                    <x-form-label for="email" required>
-                                        {{ __('Email адрес') }}
-                                    </x-form-label>
+        </x-card-header>
 
-                                    <x-form-input type="email" name="email" id="email" aria-describedby="emailHelp" autofocus/>
+        <x-card-body>
+            <x-form action="{{ route('login.store') }}" method="POST">
+                @csrf
+                <x-form-item>
 
-                                    <div id="emailHelp" class="form-text">
-                                        {{ __('Мы никогда не передадим вашу электронную почту кому-либо еще.') }}
-                                    </div>
+                    <x-form-label for="email" required>
+                        {{ __('Email адрес') }}
+                    </x-form-label>
 
-                                </x-form-item>
+                    <x-form-input type="email" name="email" id="email" aria-describedby="emailHelp" autofocus/>
 
-                                <x-form-item>
-
-                                    <x-form-label for="password" required>
-                                        {{ __('Пароль') }}
-                                    </x-form-label>
-
-                                    <x-form-input type="password" name="password" id="password" />
-
-                                </x-form-item>
-
-                                <x-form-item :mb="4">
-
-                                    <x-form-checkbox name="remember" connectorId="remember">
-                                        {{ __('Запомнить меня') }}
-                                    </x-form-checkbox>
-
-                                </x-form-item>
-
-
-                                <x-button type="submit" color="success" size="lg">
-                                    {{ __('Войти') }}
-                                </x-button>
-
-                            </x-form>
-                        </x-card-body>
-
+                    <div id="emailHelp" class="form-text">
+                        {{ __('Мы никогда не передадим вашу электронную почту кому-либо еще.') }}
                     </div>
 
-                </div>
+                </x-form-item>
 
-            </div>
+                <x-form-item>
 
-        </div>
-    </section>
+                    <x-form-label for="password" required>
+                        {{ __('Пароль') }}
+                    </x-form-label>
+
+                    <x-form-input type="password" name="password" id="password" />
+
+                </x-form-item>
+
+                <x-form-item :mb="4">
+
+                    <x-form-checkbox name="remember" connectorId="remember">
+                        {{ __('Запомнить меня') }}
+                    </x-form-checkbox>
+
+                </x-form-item>
+
+
+                <x-button type="submit">
+                    {{ __('Войти') }}
+                </x-button>
+
+            </x-form>
+        </x-card-body>
+
+    </x-card>
 
 @endsection
