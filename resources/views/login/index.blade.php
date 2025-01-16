@@ -13,58 +13,52 @@
 
                     <div class="card pt-3 pb-3 bg-body-secondary">
 
-                        <div class="card-body">
+                        <x-card-header>
+                            {{ __('Вход') }}
+                        </x-card-header>
 
-                            <h5 class="card-title ">
-                                {{ __('Вход') }}
-                            </h5>
-
-                        </div>
-
-                        <div class="card-body">
-
-                            <form action="{{ route('login.store') }}" method="POST">
+                        <x-card-body>
+                            <x-form action="{{ route('login.store') }}" method="POST">
                                 @csrf
-                                <div class="mb-3">
+                                <x-form-item required>
 
-                                    <label for="email" class="form-label required">
+                                    <x-form-label for="email" required>
                                         {{ __('Email адрес') }}
-                                    </label>
+                                    </x-form-label>
 
-                                    <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" autofocus>
+                                    <x-form-input type="email" name="email" id="email" aria-describedby="emailHelp" autofocus/>
 
                                     <div id="emailHelp" class="form-text">
                                         {{ __('Мы никогда не передадим вашу электронную почту кому-либо еще.') }}
                                     </div>
 
-                                </div>
+                                </x-form-item>
 
-                                <div class="mb-3">
+                                <x-form-item>
 
-                                    <label for="password" class="form-label required">
+                                    <x-form-label for="password" required>
                                         {{ __('Пароль') }}
-                                    </label>
+                                    </x-form-label>
 
-                                    <input type="password" name="password" class="form-control" id="password">
+                                    <x-form-input type="password" name="password" id="password" />
 
-                                </div>
+                                </x-form-item>
 
-                                <div class="mb-4 form-check">
+                                <x-form-item :mb="4">
 
-                                    <input type="checkbox" name="remember" value="1" class="form-check-input" id="remember">
-
-                                    <label class="form-check-label" for="remember">
+                                    <x-form-checkbox name="remember" connectorId="remember">
                                         {{ __('Запомнить меня') }}
-                                    </label>
+                                    </x-form-checkbox>
 
-                                </div>
+                                </x-form-item>
 
-                                <button type="submit" class="btn btn-primary">
+
+                                <x-button type="submit" color="success" size="lg">
                                     {{ __('Войти') }}
-                                </button>
+                                </x-button>
 
-                            </form>
-                        </div>
+                            </x-form>
+                        </x-card-body>
 
                     </div>
 
