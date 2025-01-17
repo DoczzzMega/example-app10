@@ -14,11 +14,14 @@ class LoginController extends Controller
 
     public function store(Request $request, Route $route)
     {
-        $data = $request->get('email');
-//        dd($data);
-//        dd(route('blog.index', ['id' => 1]));
-//        dd($request->);
+        $email = $request->input('email');
 
-        return 'Аутентифицировать пользователя ' . ($request->route()->named('login.store') ? 'yes-login.store' : '');
+        $password = $request->input('password');
+
+        $remember = $request->boolean('remember');
+
+        dd($email, $password, $remember);
+
+//        return 'Аутентифицировать пользователя ' . ($request->route()->named('login.store') ? 'yes-login.store' : '');
     }
 }

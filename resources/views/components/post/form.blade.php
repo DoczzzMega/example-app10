@@ -1,6 +1,8 @@
 @props(['post' => null])
 
-<x-form {{ $attributes }} method="POST">
+<x-form {{ $attributes->merge([
+    'method' => 'post'
+]) }}>
 
     <x-form-item>
 

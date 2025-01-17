@@ -13,6 +13,20 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
+        $name = $request->input('name');
+
+        $email = $request->input('email');
+
+        $password = $request->input('password');
+
+        $passwordConfirmation = $request->input('password_confirmation');
+
+        $agreement = $request->boolean('agreement');
+
+        dd($name, $email, $password, $passwordConfirmation, $agreement);
+
+//        dd($request->all());
+
         return 'Зарегистрировать пользователя';
     }
 }

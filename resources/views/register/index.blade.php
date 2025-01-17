@@ -68,7 +68,7 @@
 
                 <x-form-item :mb="4">
 
-                    <x-form-checkbox name="remember" connectorId="remember">
+                    <x-form-checkbox name="agreement" connectorId="agreement">
                         {{ __('Я согласен на обработку пользовательских данных') }}
                     </x-form-checkbox>
 

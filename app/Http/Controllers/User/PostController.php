@@ -37,6 +37,13 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+
+        $title = $request->input('title');
+
+        $content = $request->input('content');
+
+        dd($title, $content);
+
         return 'Сохраниенить новость';
     }
 
@@ -73,6 +80,12 @@ class PostController extends Controller
      */
     public function update(Request $request, string $post)
     {
+        $title = $request->input('title');
+
+        $content = $request->input('content');
+
+        dd($title, $content);
+
         return 'Редактировать одну новость';
     }
 
