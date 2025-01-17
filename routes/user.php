@@ -3,7 +3,8 @@
 use App\Http\Controllers\User\PostController;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('user')->as('user.')->middleware(['auth', 'active'])->group(function () {
+//Route::prefix('user')->as('user.')->middleware(['auth', 'active'])->group(function () {
+Route::prefix('user')->as('user.')->group(function () {
     Route::redirect('/', '/user/posts')->name('user');
 
     Route::get('/posts', [PostController::class, 'index'])->name('posts.index');

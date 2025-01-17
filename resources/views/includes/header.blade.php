@@ -13,13 +13,13 @@
                     <a class="nav-link {{ Route::is('home') ? 'active' : ''}}" aria-current="page" href="{{ route('home') }}">{{ __('Главная') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Route::is('blog.index') ? 'active' : ''}}" href="{{ route('blog.index') }}">{{ __('Блог') }}</a>
+                    <a class="nav-link {{ Route::is('blog*') ? 'active' : ''}}" href="{{ route('blog.index') }}">{{ __('Блог') }}</a>
                 </li>
             </ul>
 
             <ul class="navbar-nav ms-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link {{ Route::is('register.index') ? 'active' : ''}}" aria-current="page" href="{{ route('register.index') }}">{{ __('Регистрация') }}</a>
+                    <a class="nav-link {{ active_link('register.index') }}" aria-current="page" href="{{ route('register.index') }}">{{ __('Регистрация') }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ Route::is('login') ? 'active' : ''}}" href="{{ route('login') }}">{{ __('Вход') }}</a>
