@@ -23,9 +23,12 @@ class RegisterController extends Controller
 
         $agreement = $request->boolean('agreement');
 
-        dd($name, $email, $password, $passwordConfirmation, $agreement);
+//        dd($name, $email, $password, $passwordConfirmation, $agreement);
 
-//        dd($request->all());
+        if (true) {
+            return back()->withInput();
+        }
+
 
         return 'Зарегистрировать пользователя';
     }

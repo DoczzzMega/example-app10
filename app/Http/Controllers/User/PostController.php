@@ -42,7 +42,9 @@ class PostController extends Controller
 
         $content = $request->input('content');
 
-        dd($title, $content);
+//        dd($title, $content);
+
+        return redirect()->route('user.posts.show', 123);
 
         return 'Сохраниенить новость';
     }
@@ -84,7 +86,13 @@ class PostController extends Controller
 
         $content = $request->input('content');
 
-        dd($title, $content);
+//        dd($title, $content);
+
+        return back();
+
+        return redirect()->back();
+
+        return redirect()->route('user.posts.show', 123);
 
         return 'Редактировать одну новость';
     }
@@ -94,6 +102,9 @@ class PostController extends Controller
      */
     public function delete(string $post)
     {
+
+        return redirect()->route('user.posts');
+
         return 'Удалить одну новость';
     }
 

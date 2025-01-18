@@ -7,7 +7,11 @@
 <div class="form-check">
 
     <input type="checkbox" {{ $attributes->merge([
-    'value' => 1
+
+    'value' => 1,
+    'checked' => false,
+//    'checked' => !! old($attributes->get('name')),
+
 ]) }}  class="form-check-input" id="{{ $connectorId }}">
 
     <label class="form-check-label {{ $text }}" for="{{ $connectorId }}">

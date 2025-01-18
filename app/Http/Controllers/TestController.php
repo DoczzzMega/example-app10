@@ -8,8 +8,9 @@ class TestController extends Controller
 {
     function __construct()
     {
-        $this->middleware('token')->only('index');
-        //$this->middleware('token2')->only('store');
+//        $this->middleware('token')->only('index');
+
+//        $this->middleware('token2')->only('store');
 
         //$this->middleware('token3')->except('show'); // применить ко всем кроме show
 
@@ -18,11 +19,27 @@ class TestController extends Controller
 
     function __invoke(Request $request): string
     {
-        return '<h1>test controller</h1>';
+//        return response('test');
+
+//        return response()->json(['foo' => 'bar']);
+
+        return [1,2,3];
+
+//        return '<h1>test controller</h1>';
     }
 
     function index()
     {
+        return response('test', 200, [
+            'Content-Type' => 'text/plain',
+            'foo' => 'bar',
+        ]);
+
+        return [1,2,3];
+
+
+        return response()->json(['foo' => 'bar']);
+
         return 'test page';
     }
 

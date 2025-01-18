@@ -32,7 +32,7 @@
                         {{ __('Имя') }}
                     </x-form-label>
 
-                    <x-form-input name="name" id="name" aria-describedby="emailHelp" autofocus/>
+                    <x-form-input name="name" value="{{ old('name') }}" id="name" aria-describedby="emailHelp" autofocus/>
 
                 </x-form-item>
 
@@ -42,7 +42,7 @@
                         {{ __('Email адрес') }}
                     </x-form-label>
 
-                    <x-form-input type="email" name="email" id="email" />
+                    <x-form-input type="email" name="email" value="{{ old('email') }}" id="email" />
 
                 </x-form-item>
 
@@ -68,7 +68,7 @@
 
                 <x-form-item :mb="4">
 
-                    <x-form-checkbox name="agreement" connectorId="agreement">
+                    <x-form-checkbox name="agreement" connectorId="agreement" :checked="old('agreement')">
                         {{ __('Я согласен на обработку пользовательских данных') }}
                     </x-form-checkbox>
 

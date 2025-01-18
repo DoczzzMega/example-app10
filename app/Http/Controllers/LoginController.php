@@ -28,7 +28,11 @@ class LoginController extends Controller
 
         $remember = $request->boolean('remember');
 
-        dd($email, $password, $remember);
+//        dd($email, $password, $remember);
+
+//        return response()->redirectToRoute('user');  // Просто для понимания, что под капотом
+
+        return redirect()->route('user');
 
 //        return 'Аутентифицировать пользователя ' . ($request->route()->named('login.store') ? 'yes-login.store' : '');
     }
