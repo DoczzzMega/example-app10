@@ -8,6 +8,8 @@
         {{ __('Список постов') }}
     </x-title>
 
+    @include('blog.filter')
+
     @if(empty($posts))
         <h5>Нет ни одного поста</h5>
     @else

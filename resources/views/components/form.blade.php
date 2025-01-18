@@ -12,7 +12,12 @@
 
     @endunless
 
-    @csrf
+
+    @if($method !== 'GET')
+            @csrf
+    @endif
+
+
 
     {{ $slot }}
 

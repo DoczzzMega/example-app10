@@ -9,6 +9,14 @@ class LoginController extends Controller
 {
     public function index()
     {
+        $ip = request()->ip();
+
+        $path = request()->path();
+
+        $url = request()->url();
+
+//        dd(request()->is('login*'), request()->routeIs('login.index'));
+
         return view('login.index');
     }
 
