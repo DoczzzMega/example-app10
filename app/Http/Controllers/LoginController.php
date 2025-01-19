@@ -32,6 +32,8 @@ class LoginController extends Controller
 
 //        return response()->redirectToRoute('user');  // Просто для понимания, что под капотом
 
+        alert('Добро пожаловать', );
+
         return redirect()->route('user');
 
 //        return 'Аутентифицировать пользователя ' . ($request->route()->named('login.store') ? 'yes-login.store' : '');

@@ -44,6 +44,8 @@ class PostController extends Controller
 
 //        dd($title, $content);
 
+        alert('Создан новый пост', 'primary');
+
         return redirect()->route('user.posts.show', 123);
 
         return 'Сохраниенить новость';
@@ -87,6 +89,8 @@ class PostController extends Controller
         $content = $request->input('content');
 
 //        dd($title, $content);
+
+        alert('Сохранено');
 
         return back();
 

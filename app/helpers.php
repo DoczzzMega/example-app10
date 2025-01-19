@@ -15,3 +15,10 @@ if(! function_exists('active_link')){
         return Route::is($name) ? $class : '';
     }
 }
+
+if(! function_exists('alert')){
+    function alert(string $message, string $type = 'success'): void
+    {
+        session(['alert' => __($message), 'message_type' => $type]);
+    }
+}
