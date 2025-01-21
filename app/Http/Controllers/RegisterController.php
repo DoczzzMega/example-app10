@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Currency;
 use Illuminate\Http\Request;
 
 class RegisterController extends Controller
@@ -11,7 +12,7 @@ class RegisterController extends Controller
         return view('register.index');
     }
 
-    public function store(Request $request)
+    public function store(Request $request,)
     {
         $name = $request->input('name');
 
@@ -25,10 +26,13 @@ class RegisterController extends Controller
 
 //        dd($name, $email, $password, $passwordConfirmation, $agreement);
 
-        if (true) {
+        if (!true) {
             return back()->withInput();
         }
-
+//        $currency = new Currency;
+        $currency = Currency::first();
+//        $currency = $currency->toArray();
+        dd($currency);
 
         return 'Зарегистрировать пользователя';
     }
