@@ -43,9 +43,6 @@ class PostController extends Controller
 //
 //        $content = $request->input('content');
 
-//        dd($title, $content);
-
-
 
         $validated = $request->validate([
 
@@ -143,9 +140,9 @@ class PostController extends Controller
 
         return back();
 
-        return redirect()->back();
+//        return redirect()->back();
 
-        return redirect()->route('user.posts.show', 123);
+//        return redirect()->route('user.posts.show', 123);
 
         return 'Редактировать одну новость';
     }
