@@ -3,8 +3,9 @@
 <label {{ $attributes->class([
     'form-label',
     ($required ? 'required' : ''),
+
 ]) }}>
 
-    {{ $slot }}
+    {{ $slot }} {{ $right_error ?? '' }}
 
 </label>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class PostController extends Controller
 {
@@ -38,11 +39,58 @@ class PostController extends Controller
     public function store(Request $request)
     {
 
-        $title = $request->input('title');
-
-        $content = $request->input('content');
+//        $title = $request->input('title');
+//
+//        $content = $request->input('content');
 
 //        dd($title, $content);
+
+
+
+        $validated = $request->validate([
+
+            'title' => ['required', 'string', 'max:255'],
+
+            'content' => ['required', 'string', 'max:10000'],
+
+        ]);
+
+//        Post::create($validated);
+
+
+        // Обект запроса не должен уходить дальше контроллера
+        // CreatePost::run($request->all);                       // Сервис создани поста и валидация внутри
+
+//        $validated = validator($request->all(), [
+//
+//            'title' => ['required', 'string', 'max:255'],
+//            'content' => ['required', 'string', 'max:10000'],
+//
+//        ])->validate();
+
+
+        // СВОЯ ФУНКЦИЯ ХЕЛПЕР
+
+//        $validated = validate($request->all(), [
+//
+//            'title' => ['required', 'string', 'max:255'],
+//            'content' => ['required', 'string', 'max:10000'],
+//
+//        ]);
+
+        if(! true) {
+            return back()->withInput()->withErrors([
+                'account' => 'Недостаточно средств'
+            ]);
+        }
+
+//        if($order->amount > $account->balance)
+
+//        if (true) {
+//            throw ValidationException::withMessages([
+//                'account' => 'Недостаточно средств'
+//            ]);
+//        }
 
         alert('Создан новый пост', 'primary');
 
@@ -84,11 +132,12 @@ class PostController extends Controller
      */
     public function update(Request $request, string $post)
     {
-        $title = $request->input('title');
+        $validated = validate($request->all(), [
 
-        $content = $request->input('content');
+            'title' => ['required', 'string', 'max:255'],
+            'content' => ['required', 'string', 'max:10000'],
 
-//        dd($title, $content);
+        ]);
 
         alert('Сохранено');
 

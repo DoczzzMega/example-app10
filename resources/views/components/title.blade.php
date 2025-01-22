@@ -28,6 +28,6 @@
 
     </div>
 
-
-
 </div>
+
+<x-errors />

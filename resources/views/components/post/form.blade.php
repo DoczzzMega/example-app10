@@ -7,10 +7,22 @@
     <x-form-item>
 
         <x-form-label for="title" required>
+
             {{ __('Название поста') }}
+
+            <x-slot name="right_error">
+
+
+
+            </x-slot>
+
         </x-form-label>
 
-        <x-form-input name="title" value="{{ $post->title ?? '' }}" id="title" autofocus/>
+        <x-error name="title"/>
+
+        <x-form-input name="title" value="{{ $post->title ?? old('title') }}" id="title" autofocus/>
+
+
 
     </x-form-item>
 
@@ -20,9 +32,11 @@
             {{ __('Содержание поста') }}
         </x-form-label>
 
+        <x-error name="content"/>
+
         {{--            <x-form-textarea name="content" rows="8" id="content"/>--}}
 
-        <x-trix name="content" value="{{ $post->content ?? '' }}"/>
+        <x-trix name="content" value="{{ $post->content ?? old('content') }}"/>
 
     </x-form-item>
 
@@ -31,3 +45,4 @@
     </x-button>
 
 </x-form>
+
