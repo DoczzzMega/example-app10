@@ -12,6 +12,12 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $attributes = [  // сами создали здесь свойство. оно добавит значения в атрибуты в базовом классе Model
+
+//        'admin' => true //  можно указать значения атрибутов по умолчанию
+
+    ];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -29,7 +35,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $hidden = [
+    protected $hidden = [        // при вызова метода toArray или toJson исключает эти свойства модели
         'password',
         'remember_token',
     ];

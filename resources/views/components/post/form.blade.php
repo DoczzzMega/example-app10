@@ -40,6 +40,26 @@
 
     </x-form-item>
 
+    <x-form-item>
+
+        <x-form-label for="published_at" required>
+            {{ __('Дата публикации') }}
+        </x-form-label>
+
+        <x-error name="published_at"/>
+
+        <x-form-input name="published_at" id="published_at" placeholder="dd.mm.yyyy"/>
+
+    </x-form-item>
+
+    <x-form-item>
+
+        <x-form-checkbox name="published" connectorId="published">
+            {{ __('Опобликовано') }}
+        </x-form-checkbox>
+
+    </x-form-item>
+
     <x-button type="submit">
         {{ __($post ? 'Сохранить' : 'Создать пост') }}
     </x-button>

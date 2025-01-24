@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
 class PostController extends Controller
@@ -50,9 +54,48 @@ class PostController extends Controller
 
             'content' => ['required', 'string', 'max:10000'],
 
+            'published_at' => ['nullable', 'string', 'date'],
+
+            'published' => ['nullable', 'boolean'],
+
         ]);
 
-//        Post::create($validated);
+
+        $post = Post::query()->create([
+
+//            'user_id' => Auth::id(),  // при наличии аутентификации можно взять ID из сессии
+
+            'user_id' => User::query()->value('id'), //value('id') возьмет первое попавшееся значение из колонки ID
+
+            'title' => $validated['title'],
+
+            'content' => $validated['content'],
+
+//            'published_at' => $validated['published_at'] ?? null,
+
+            'published_at' => new Carbon($validated['published_at'] ?? null), //если null - подставит текущую дату
+
+            'published' => $validated['published'] ?? false,
+
+        ]);
+
+
+
+//        $post = Post::query()->firstOrCreate([                //если пост с таким заголовком у юзера есть вернет его
+//
+//            'user_id' => User::query()->value('id'),
+//
+//            'title' => $validated['title'],
+//
+//        ],[
+//
+//            'content' => $validated['content'],
+//
+//            'published_at' => new Carbon($validated['published_at'] ?? null),
+//
+//            'published' => $validated['published'] ?? false,
+//
+//        ]);
 
 
         // Обект запроса не должен уходить дальше контроллера

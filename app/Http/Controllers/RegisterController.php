@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Currency;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
@@ -14,26 +16,51 @@ class RegisterController extends Controller
 
     public function store(Request $request,)
     {
-        $name = $request->input('name');
 
-        $email = $request->input('email');
+        $validated = $request->validate([
 
-        $password = $request->input('password');
+            'name' => ['required', 'string', 'max:50'],
 
-        $passwordConfirmation = $request->input('password_confirmation');
+            'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
 
-        $agreement = $request->boolean('agreement');
+            'password' => ['required', 'string', 'min:7', 'max:50', 'confirmed'],
 
-//        dd($name, $email, $password, $passwordConfirmation, $agreement);
+            'agreement' => ['accepted'],
 
-        if (!true) {
-            return back()->withInput();
-        }
-//        $currency = new Currency;
-        $currency = Currency::first();
+        ]);
+
+//        $user = new User();
+//
+//        $user->name = $validated['name'];
+//
+//        $user->email = $validated['email'];
+//
+//        $user->password = bcrypt($validated['password']);
+
+//        $user->save();
+
+//        dd(User::query()); // объект query builder
+
+        User::query()->create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => bcrypt($validated['password']),
+        ]);
+
+//        $user = new User(['name' => $validated['name']]);
+//
+//        $user->fill(['email' => $validated['email']]);
+//
+//        $user->setAttribute('password', bcrypt($validated['password']));
+//
+//        $user->admin = true;
+//
+//        dd($user->toArray());
+
+//        $currency = Currency::first();
 //        $currency = $currency->toArray();
-        dd($currency);
+//        dd($currency);
 
-        return 'Зарегистрировать пользователя';
+        return redirect()->route('user');
     }
 }
