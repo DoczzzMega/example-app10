@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Route;
+
 
 class LoginController extends Controller
 {
@@ -20,15 +22,20 @@ class LoginController extends Controller
         return view('login.index');
     }
 
-    public function store(Request $request, Route $route)
+    public function store(Request $request)
     {
-        $email = $request->input('email');
+//        for ($i = 0; $i < 100; $i++) {
+//
+//            Post::query()->create([
+//                'user_id' => User::query()->value('id'),
+//                'title' => fake()->sentence(),
+//                'content' => fake()->paragraph(),
+//                'published' => true,
+//                'published_at' => fake()->dateTimeBetween(now()->subYear(), now()),
+//            ]);
+//
+//        }
 
-        $password = $request->input('password');
-
-        $remember = $request->boolean('remember');
-
-//        dd($email, $password, $remember);
 
 //        return response()->redirectToRoute('user');  // Просто для понимания, что под капотом
 
