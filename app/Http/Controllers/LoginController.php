@@ -24,7 +24,7 @@ class LoginController extends Controller
 
     public function store(Request $request)
     {
-//        for ($i = 0; $i < 100; $i++) {
+//        for ($i = 0; $i < 1000; $i++) {
 //
 //            Post::query()->create([
 //                'user_id' => User::query()->value('id'),

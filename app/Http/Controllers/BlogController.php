@@ -52,7 +52,7 @@ class BlogController extends Controller
 
             'limit' => ['nullable', 'integer', 'between:1,100'],
 
-            'page' => ['nullable', 'integer', 'between:1,100'],
+            'page' => ['nullable', 'integer', 'between:1,10000'],
 
         ]);
 
@@ -81,7 +81,7 @@ class BlogController extends Controller
 
         $posts = Post::query()->latest('published_at')->paginate($limit);
 
-
+//        dd($posts);
 
 //        $posts = $posts->toArray();
 
@@ -115,11 +115,40 @@ class BlogController extends Controller
 
     function show($post)
     {
-        $post = (object) [
-            'id' => 123,
-            'title' => 'Lorem ipsum dolor sit amet.',
-            'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, temporibus.',
-        ];
+//        function show(Post $post) { // route model binding /вызовет под капотом $post = Post::query()->findOrFail($post);
+//            return 'шаблон';
+//        }
+
+        //select * from posts order by id asc limit 1 //при этом методе всегда желательно указывать сортирвку
+//        $post = Post::query()->oldest('id')->first();
+//
+//        $post = Post::query()
+//            ->where('id', 1234)
+//            ->oldest('id')
+//            ->firstOrFail(['id', 'title', 'published_at']);
+
+//        //select id, title, content where id in (1,2,3)
+//        $posts = Post::query()->find([1,2,3], ['id', 'title', 'content', 'published_at']); //findOrFail тут не сработает
+//
+//        //select id, title, content where id = 123
+//        $post = Post::query()->findOrFail($post);
+
+        $post = cache()->remember(
+
+            key: "posts.{$post}",
+
+            ttl: now()->addHour(),
+
+            callback: function () use ($post) {
+
+                info('test');
+
+            return Post::query()->findOrFail($post);
+
+        });
+
+
+
         return view('blog.show', compact('post'));
     }
 }

@@ -22,4 +22,8 @@
 
     {!! $post->content !!}
 
+    <div class="small text-muted mt-3">
+        {{ $post->published_at->format('d.m.Y H:i:s') }}
+    </div>
+
 @endsection

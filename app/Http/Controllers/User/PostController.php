@@ -19,14 +19,6 @@ class PostController extends Controller
     {
 
         $posts = Post::query()->paginate(12);
-//
-//        $post = (object) [
-//            'id' => 123,
-//            'title' => 'Lorem ipsum dolor sit amet.',
-//            'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, temporibus.',
-//        ];
-//
-//        $posts = array_fill(0,10, $post);
 
         return view('user.posts.index', compact('posts'));
     }
@@ -44,11 +36,6 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-
-//        $title = $request->input('title');
-//
-//        $content = $request->input('content');
-
 
         $validated = $request->validate([
 
@@ -80,25 +67,6 @@ class PostController extends Controller
             'published' => $validated['published'] ?? false,
 
         ]);
-
-
-
-//        $post = Post::query()->firstOrCreate([                //если пост с таким заголовком у юзера есть вернет его
-//
-//            'user_id' => User::query()->value('id'),
-//
-//            'title' => $validated['title'],
-//
-//        ],[
-//
-//            'content' => $validated['content'],
-//
-//            'published_at' => new Carbon($validated['published_at'] ?? null),
-//
-//            'published' => $validated['published'] ?? false,
-//
-//        ]);
-
 
         // Обект запроса не должен уходить дальше контроллера
         // CreatePost::run($request->all);                       // Сервис создани поста и валидация внутри
@@ -137,8 +105,6 @@ class PostController extends Controller
         alert('Создан новый пост', 'primary');
 
         return redirect()->route('user.posts.show', 123);
-
-        return 'Сохраниенить новость';
     }
 
     /**
@@ -184,12 +150,6 @@ class PostController extends Controller
         alert('Сохранено');
 
         return back();
-
-//        return redirect()->back();
-
-//        return redirect()->route('user.posts.show', 123);
-
-        return 'Редактировать одну новость';
     }
 
     /**
@@ -199,8 +159,6 @@ class PostController extends Controller
     {
 
         return redirect()->route('user.posts');
-
-        return 'Удалить одну новость';
     }
 
     public function like(string $post)

@@ -10,7 +10,7 @@
 
     @include('blog.filter')
 
-    @if(empty($posts))
+    @if($posts->isEmpty())
         <h5>Нет ни одного поста</h5>
     @else
         <div class="row">

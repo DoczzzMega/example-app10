@@ -18,7 +18,7 @@
 
     </x-title>
 
-    @if(empty($posts))
+    @if($posts->isEmpty())
         <h5>Нет ни одного поста</h5>
     @else
         @foreach($posts as $post)
