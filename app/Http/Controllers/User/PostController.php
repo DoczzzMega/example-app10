@@ -112,11 +112,7 @@ class PostController extends Controller
      */
     public function show(string $post)
     {
-        $post = (object) [
-            'id' => 123,
-            'title' => 'Lorem ipsum dolor sit amet.',
-            'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, temporibus.',
-        ];
+        $post = Post::query()->findOrFail($post);
 
         return view('user.posts.show', ['post' => $post]);
     }
